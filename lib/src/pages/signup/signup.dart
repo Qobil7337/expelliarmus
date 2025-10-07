@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatelessWidget {
@@ -41,9 +42,10 @@ class Signup extends StatelessWidget {
                         child: TextFormField(
                           decoration: const InputDecoration(
                               hintText: 'Email',
-                              border: OutlineInputBorder(),
+                              border: InputBorder.none,
                               filled: true,
-                              fillColor: Color(0xFFE0E0E0)
+                              fillColor: Color.fromRGBO(245, 240, 240, 1.0),
+                              contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
                           ),
                         ),
                       ),
@@ -52,7 +54,10 @@ class Signup extends StatelessWidget {
                         child: TextFormField(
                           decoration: const InputDecoration(
                               hintText: 'Parol',
-                              border: OutlineInputBorder()
+                              border: InputBorder.none,
+                              filled: true,
+                              fillColor: Color.fromRGBO(245, 240, 240, 1.0),
+                              contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
                           ),
                         ),
                       )
@@ -84,11 +89,28 @@ class Signup extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Center(
-                child: Text(
-                  'Hisobingiz yo‘qmi? Ro‘yxatdan o‘ting',
+                child: RichText(
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15,
+                  text: TextSpan(
+                    text: 'Hisobingiz yo‘qmi? ',
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.black
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'Ro‘yxatdan o‘ting',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushNamed(context, '/login');
+                          }
+                      )
+                    ]
                   ),
                 ),
               ),
