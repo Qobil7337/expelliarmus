@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class Signup extends StatelessWidget {
-  const Signup({super.key});
+class SignIn extends StatelessWidget {
+  const SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,10 @@ class Signup extends StatelessWidget {
                         child: TextFormField(
                           decoration: const InputDecoration(
                               hintText: 'Email',
-                              border: InputBorder.none,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.all(Radius.circular(12.0))
+                              ),
                               filled: true,
                               fillColor: Color.fromRGBO(245, 240, 240, 1.0),
                               contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
@@ -54,7 +57,10 @@ class Signup extends StatelessWidget {
                         child: TextFormField(
                           decoration: const InputDecoration(
                               hintText: 'Parol',
-                              border: InputBorder.none,
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.all(Radius.circular(12.0))
+                              ),
                               filled: true,
                               fillColor: Color.fromRGBO(245, 240, 240, 1.0),
                               contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
@@ -65,7 +71,7 @@ class Signup extends StatelessWidget {
                   )
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
                   onTap: () {},
                   child: Container(
@@ -107,7 +113,7 @@ class Signup extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, '/sign-up');
                           }
                       )
                     ]

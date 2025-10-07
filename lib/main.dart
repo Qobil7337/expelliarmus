@@ -1,5 +1,6 @@
-import 'package:expense_tracker/src/pages/signup/signup.dart';
 import 'package:flutter/material.dart';
+import 'src/pages/sign-in/sign-in.dart';
+import 'src/pages/sign-up/sign-up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense tracker',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/signup',
+      initialRoute: '/sign-in',
       routes: {
-        '/signup': (context) => const Signup(),
+        '/sign-in': (context) => const SignIn(),
+        '/sign-up': (context) => const SignUp()
       },
     );
   }
