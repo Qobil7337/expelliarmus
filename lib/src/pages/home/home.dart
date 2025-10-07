@@ -27,21 +27,23 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: Text("Hello")
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          selectedItemColor: Color.fromRGBO(135,99,99,1.0),       // color for selected label + icon
-          unselectedItemColor: Colors.grey,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset("lib/src/assets/icons/dashboard.svg"),
-                label: 'Dashboard',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.business), label: 'Business'
-            ),
-          ]
-      ),
+
     );
   }
 }
+
+// bottomNavigationBar: BottomNavigationBar(
+// currentIndex: _selectedIndex,
+// onTap: _onItemTapped,
+// selectedItemColor: Color.fromRGBO(135,99,99,1.0),       // color for selected label + icon
+// unselectedItemColor: Colors.grey,
+// items: <BottomNavigationBarItem>[
+// BottomNavigationBarItem(
+// icon: SvgPicture.asset("lib/src/assets/icons/dashboard.svg"),
+// label: 'Dashboard',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(Icons.business), label: 'Business'
+// ),
+// ]
+// ),
