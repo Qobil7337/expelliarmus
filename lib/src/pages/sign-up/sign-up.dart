@@ -9,6 +9,35 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+
+    super.dispose();
+  }
+
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      final name = _nameController.text.trim();
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      // For now, just print them
+      print('Name: $name');
+      print('Email: $email');
+      print('Password: $password');
+
+      // TODO: perform sign-up API call or navigation
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +68,15 @@ class _SignUpState extends State<SignUp> {
                 ),
                 SizedBox(height: 60),
                 Form(
+                  key: _formKey,
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: TextFormField(
+                            controller: _nameController,
                             decoration: const InputDecoration(
-                                hintText: "To'liq ism",
+                                hintText: "Ism",
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.all(Radius.circular(12.0))
@@ -59,6 +90,7 @@ class _SignUpState extends State<SignUp> {
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: TextFormField(
+                            controller: _emailController,
                             decoration: const InputDecoration(
                                 hintText: 'Email',
                                 border: OutlineInputBorder(
@@ -69,11 +101,21 @@ class _SignUpState extends State<SignUp> {
                                 fillColor: Color.fromRGBO(245, 240, 240, 1.0),
                                 contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Email kiriting';
+                              }
+                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                                return 'Yaroqli email kiriting';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: TextFormField(
+                            controller: _passwordController,
                             decoration: const InputDecoration(
                                 hintText: 'Parol',
                                 border: OutlineInputBorder(
@@ -84,6 +126,15 @@ class _SignUpState extends State<SignUp> {
                                 fillColor: Color.fromRGBO(245, 240, 240, 1.0),
                                 contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0)
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Parol kiriting';
+                              }
+                              if (value.length < 6) {
+                                return 'Parol kamida 6 ta belgidan iborat bo‘lishi kerak';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ],
@@ -92,7 +143,7 @@ class _SignUpState extends State<SignUp> {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: _submit,
                     child: Container(
                       padding: EdgeInsets.all(18),
                       decoration: BoxDecoration(
