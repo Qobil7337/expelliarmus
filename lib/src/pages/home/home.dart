@@ -9,17 +9,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+
 
   final List<Widget> _pages = [
 
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +27,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// bottomNavigationBar: BottomNavigationBar(
-// currentIndex: _selectedIndex,
-// onTap: _onItemTapped,
-// selectedItemColor: Color.fromRGBO(135,99,99,1.0),       // color for selected label + icon
-// unselectedItemColor: Colors.grey,
-// items: <BottomNavigationBarItem>[
-// BottomNavigationBarItem(
-// icon: SvgPicture.asset("lib/src/assets/icons/dashboard.svg"),
-// label: 'Dashboard',
-// ),
-// BottomNavigationBarItem(
-// icon: Icon(Icons.business), label: 'Business'
-// ),
-// ]
-// ),
