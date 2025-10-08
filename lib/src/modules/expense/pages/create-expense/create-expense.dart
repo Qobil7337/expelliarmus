@@ -33,13 +33,13 @@ class _CreateExpenseState extends State<CreateExpense> {
     if (_formKey.currentState!.validate()) {
       final double? amount = double.tryParse(_amountController.text);
       final String category = _categoryController.text;
-      // final String date = _dateController.text;
+      final String date = _dateController.text;
       // final String note = _noteController.text;
 
       // Example: print or send to backend
       print('Miqdor: $amount');
       print('Kategoriya: $category');
-      // print('Sana: $date');
+      print('Sana: $date');
       // print('Izoh: $note');
 
       // Here you could:
@@ -139,6 +139,50 @@ class _CreateExpenseState extends State<CreateExpense> {
                       return 'Kategoriyani tanlgang';
                     }
                     return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextFormField(
+                  controller: _dateController,
+                  readOnly: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Sana',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                    filled: true,
+                    fillColor: Color.fromRGBO(245, 240, 240, 1.0),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 12.0,
+                    ),
+                    suffixIcon: Icon(Icons.calendar_today),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Sana tanlang';
+                    }
+                    return null;
+                  },
+                  onTap: () async {
+                    FocusScope.of(
+                      context,
+                    ).requestFocus(FocusNode()); // hide keyboard
+                    final DateTime? picked = await showDatePicker(
+                      context: context,
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+
+                    if (picked != null) {
+                      setState(() {
+                        _dateController.text =
+                            "${picked.day.toString().padLeft(2, '0')}.${picked.month.toString().padLeft(2, '0')}.${picked.year}";
+                      });
+                    }
                   },
                 ),
               ),
