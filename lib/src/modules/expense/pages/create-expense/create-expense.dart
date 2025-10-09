@@ -34,13 +34,13 @@ class _CreateExpenseState extends State<CreateExpense> {
       final double? amount = double.tryParse(_amountController.text);
       final String category = _categoryController.text;
       final String date = _dateController.text;
-      // final String note = _noteController.text;
+      final String note = _noteController.text;
 
       // Example: print or send to backend
       print('Miqdor: $amount');
       print('Kategoriya: $category');
       print('Sana: $date');
-      // print('Izoh: $note');
+      print('Izoh: $note');
 
       // Here you could:
       // - save to database
@@ -184,6 +184,27 @@ class _CreateExpenseState extends State<CreateExpense> {
                       });
                     }
                   },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextFormField(
+                  controller: _noteController,
+                  minLines: 4,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    hintText: "Izoh",
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                    filled: true,
+                    fillColor: Color.fromRGBO(245, 240, 240, 1.0),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 12.0,
+                    ),
+                  ),
                 ),
               ),
             ],
