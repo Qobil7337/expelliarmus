@@ -21,8 +21,14 @@ class _PanelState extends State<Panel> {
     25: 220000,
     28: 380000,
   };
+
+  final int budget = 5000000;
+  int get totalExpenses => expenses.values.fold(0, (a, b) => a + b);
+
   @override
   Widget build(BuildContext context) {
+    final double progress = (totalExpenses / budget).clamp(0.0, 1.0);
+    final String remaining = "2,500,000";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -73,7 +79,48 @@ class _PanelState extends State<Panel> {
             height: 260,
             child: LineGraph(data: expenses)
           ),
-        )
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Byudjet 5,000,000 so'm",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 14),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Byudjet qoldig'i",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "$remaining",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: LinearProgressIndicator(
+                  value: progress,
+                  minHeight: 10,
+                  backgroundColor: Colors.grey[300],
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.redAccent),
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                '${(progress * 100).toStringAsFixed(1)}% sarflandi',
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+            ],
+          )
+        ),
       ],
     );
   }
