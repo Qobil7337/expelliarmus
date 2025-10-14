@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import '../../../components/bar chart/bar-chart.dart';
+
 class Report extends StatefulWidget {
   const Report({super.key});
 
@@ -54,18 +56,18 @@ class _ReportState extends State<Report> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            child: Text("Kategoriyalar bo'yicha xarajatlar"),
             alignment: Alignment.centerLeft,
+            child: Text("Kategoriyalar bo'yicha xarajatlar"),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
+            alignment: Alignment.centerLeft,
             child: Text(
               "1,250,000 so'm",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            alignment: Alignment.centerLeft,
           ),
         ),
         Padding(
@@ -92,6 +94,12 @@ class _ReportState extends State<Report> {
             ),
           ),
         ),
+        ExpenseBarChart(expenses: {
+          'Food': 150,
+          'Transport': 100,
+          'Bills': 50,
+          'Entertainment': 80,
+        }),
       ],
     );
   }
