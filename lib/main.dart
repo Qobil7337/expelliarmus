@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'Expense tracker',
       debugShowCheckedModeBanner: false,
       initialRoute: '/sign-in',
+      theme: ThemeData(
+        useMaterial3: false,
+        scaffoldBackgroundColor: Colors.white, // avoid gray tint
+      ),
       routes: {
         '/sign-in': (context) => const SignIn(),
         '/sign-up': (context) => const SignUp(),

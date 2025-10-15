@@ -45,7 +45,6 @@ class _PanelState extends State<Panel> {
             width: double.infinity,
             padding: const EdgeInsets.all(25),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(245, 240, 240,1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -73,7 +72,6 @@ class _PanelState extends State<Panel> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(245, 240, 240,1),
               borderRadius: BorderRadius.circular(12),
             ),
             height: 260,
