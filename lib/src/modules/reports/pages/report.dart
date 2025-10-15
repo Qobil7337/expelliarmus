@@ -99,6 +99,10 @@ class _ReportState extends State<Report> {
           'Transport': 100,
           'Bills': 50,
           'Entertainment': 80,
+          'Foodd': 150,
+          'Transportt': 100,
+          'Billss': 50,
+          'Entertainmentt': 80,
         }),
       ],
     );
