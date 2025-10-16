@@ -27,7 +27,7 @@ class LineGraph extends StatelessWidget {
         minY: 0,
         maxY: maxY * 1.2,
 
-        gridData: FlGridData(show: true, drawVerticalLine: false),
+        gridData: FlGridData(show: false, drawVerticalLine: false),
         titlesData: FlTitlesData(
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(

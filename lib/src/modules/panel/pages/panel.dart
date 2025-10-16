@@ -63,7 +63,7 @@ class _PanelState extends State<Panel> {
         Padding(
           padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
           child: Text(
-            'This Month',
+            'Bu oy',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
